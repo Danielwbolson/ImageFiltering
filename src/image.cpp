@@ -381,11 +381,11 @@ void Image::Blur(int n) {
                 for (int j = 0; j < size; j++) {
                     int d_j = abs(j - n);
 
-                    r += pow(1.0 / n, pow(d_i, 2) + pow(d_j, 2)) * pixels[i][j].r;
-                    g += pow(1.0 / n, pow(d_i, 2) + pow(d_j, 2)) * pixels[i][j].g;
-                    b += pow(1.0 / n, pow(d_i, 2) + pow(d_j, 2)) * pixels[i][j].b;
+                    r += pow(1.0 / 2.0, pow(d_i, 2) + pow(d_j, 2)) * pixels[i][j].r;
+                    g += pow(1.0 / 2.0, pow(d_i, 2) + pow(d_j, 2)) * pixels[i][j].g;
+                    b += pow(1.0 / 2.0, pow(d_i, 2) + pow(d_j, 2)) * pixels[i][j].b;
 
-                    total += pow(1.0 / n, pow(d_i, 2) + pow(d_j, 2));
+                    total += pow(1.0 / 2.0, pow(d_i, 2) + pow(d_j, 2));
                 }
             }
 

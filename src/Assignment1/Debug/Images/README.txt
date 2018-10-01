@@ -27,6 +27,7 @@ Scale:
 	./Assignment1 -input sample_images/cube.jpg -sampling 1 -scale 3 3 -output scale_bi.png
 	./Assignment1 -input sample_images/cube.jpg -sampling 2 -scale 3 3 -output scale_ga.png
 Rotate:
+	./Assignment1 -input sample_images/Jellyfish.jpg -sampling 0 -rotate 1 -output rotate.png
 	./Assignment1 -input sample_images/Jellyfish.jpg -sampling 2 -rotate 1 -output rotate.png
 Fun:
 	./Assignment1 -input sample_images/millcity.jpg -sampling 2 -fun -output fun.png
