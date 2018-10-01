@@ -266,6 +266,14 @@ int main( int argc, char* argv[] ){
                 argv += 2, argc -= 2;
             }
 
+            else if (!strcmp(*argv, "-halftone"))
+            {
+            if (img == NULL) ShowUsage();
+
+            img->Halftone();
+            argv++, argc--;
+            }
+
             else if (!strcmp(*argv, "-fun"))
             {
                 if (img == NULL) ShowUsage();

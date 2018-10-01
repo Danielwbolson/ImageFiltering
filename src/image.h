@@ -12,6 +12,9 @@
 #include <stdio.h>
 #include "pixel.h"
 
+#define _USE_MATH_DEFINES
+#include <cmath> 
+
 
 #include "stb_image.h"
 #include "stb_image_write.h"
@@ -81,6 +84,8 @@ public:
 
     // Make file from image
     void Write( char *fname );
+
+    void CopyPixels(Image* img);
 
     // Adds noise to an image.  The amount of noise is given by the factor
     // in the range [0.0..1.0].  0.0 adds no noise.  1.0 adds a lot of noise.
@@ -166,6 +171,12 @@ public:
 
     // Sample image using current sampling method.
     Pixel Sample(double u, double v);
+
+    // Halftoning images
+    void Halftone();
+
+    // Distance between two points
+    double Distance(double x, double y, double x1, double x2_);
 };
 
 #endif
