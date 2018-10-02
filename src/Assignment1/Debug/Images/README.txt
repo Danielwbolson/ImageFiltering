@@ -1,3 +1,5 @@
+Daniel Olson: Assingment1 Commands
+
 Brighten:
 	./Assignment1 -input sample_images/Jellyfish.jpg -brightness 2 -output brightness.png
 Random noise:
@@ -27,12 +29,13 @@ Scale:
 	./Assignment1 -input sample_images/cube.jpg -sampling 1 -scale 3 3 -output scale_bi.png
 	./Assignment1 -input sample_images/cube.jpg -sampling 2 -scale 3 3 -output scale_ga.png
 Rotate:
-	./Assignment1 -input sample_images/Jellyfish.jpg -sampling 0 -rotate 1 -output rotate.png
-	./Assignment1 -input sample_images/Jellyfish.jpg -sampling 2 -rotate 1 -output rotate.png
+	./Assignment1 -input sample_images/Jellyfish.jpg -sampling 0 -rotate 1 -output rotate_cp.png
+	./Assignment1 -input sample_images/Jellyfish.jpg -sampling 1 -rotate 1 -output rotate_bi.png
+	./Assignment1 -input sample_images/Jellyfish.jpg -sampling 2 -rotate 1 -output rotate_ga.png
 Fun:
-	./Assignment1 -input sample_images/millcity.jpg -sampling 0 -fun -output fun.png
-	./Assignment1 -input sample_images/millcity.jpg -sampling 1 -fun -output fun.png
-	./Assignment1 -input sample_images/millcity.jpg -sampling 2 -fun -output fun.png
+	./Assignment1 -input sample_images/cube.jpg -sampling 0 -fun -output fun_cp.png
+	./Assignment1 -input sample_images/cube.jpg -sampling 1 -fun -output fun_bi.png
+	./Assignment1 -input sample_images/cube.jpg -sampling 2 -fun -output fun_ga.png
 Nonphotorealism:
 	./Assignment1 -input sample_images/tree_dark.jpg -nonPhotorealistic -output out.png
 Ordered Dither:
