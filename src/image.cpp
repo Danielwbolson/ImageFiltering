@@ -340,74 +340,48 @@ void Image::FloydSteinbergDither(int nbits) {
 
 void Image::Blur(int n) {
     // Create our 2D array of pixels
-    int size = 2 * n + 1;
-    Pixel** pixels = new Pixel*[size];
 
     Image* img = new Image(Width(), Height());
-
-    for (int i = 0; i < size; i++) {
-        pixels[i] = new Pixel[size];
-    }
 
     for (int x = 0; x < Width(); x++) {
         for (int y = 0; y < Height(); y++) {
 
-            // Using mirror technique on edges
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
+            double red = 0;
+            double gre = 0;
+            double blu = 0;
+            double weightTot = 0;
 
-                    int r = abs(x);
-                    if (x > Width() - n - 1) {
-                        r = abs(Width() - n - 1 - abs(x - Width() - n - 1));
-                    }
+            for (int i = x - n; i <= x + n; i++) {
+                for (int j = y - n; j <= y + n; j++) {
 
-                    int c = abs(y);
-                    if (y > Height() - n - 1) {
-                        c = abs(Height() - n - 1 - abs(y - Height() - n - 1));
-                    }
+                    int r = abs(i);
+                    if (i >= Width())
+                        r = abs(Width() - 1 - abs(i - Width() - 1));
 
-                    pixels[i][j] = GetPixel(r + abs(i - n), c + abs(j - n));
+                    int c = abs(j);
+                    if (j >= Height())
+                        c = abs(Height() - 1 - abs(j - Height() - 1));
+
+                    double weight = (1.0 / (2 * M_PI)) * pow(M_E, -pow(Distance(i, j, r, c), 2) / 2.0);
+
+                    red += weight * GetPixel(r, c).r;
+                    gre += weight * GetPixel(r, c).g;
+                    blu += weight * GetPixel(r, c).b;
+
+                    weightTot += weight;
                 }
             }
-
-            double r = 0;
-            double g = 0;
-            double b = 0;
-            double total = 0;
-
-            // Dynamic sizing with size of square, all adds up to one
-            for (int i = 0; i < size; i++) {
-                int d_i = abs(i - n);
-                for (int j = 0; j < size; j++) {
-                    int d_j = abs(j - n);
-
-                    r += pow(1.0 / 2.0, pow(d_i, 2) + pow(d_j, 2)) * pixels[i][j].r;
-                    g += pow(1.0 / 2.0, pow(d_i, 2) + pow(d_j, 2)) * pixels[i][j].g;
-                    b += pow(1.0 / 2.0, pow(d_i, 2) + pow(d_j, 2)) * pixels[i][j].b;
-
-                    total += pow(1.0 / 2.0, pow(d_i, 2) + pow(d_j, 2));
-                }
-            }
-
-            r /= total;
-            g /= total;
-            b /= total;
 
             img->GetPixel(x, y) = Pixel(
-                fmax(0, fmin(255, (int)r)),
-                fmax(0, fmin(255, (int)g)),
-                fmax(0, fmin(255, (int)b)));
+                fmax(0, fmin(255, (int)(red / weightTot))),
+                fmax(0, fmin(255, (int)(gre / weightTot))),
+                fmax(0, fmin(255, (int)(blu / weightTot))));
         }
     }
 
     CopyPixels(img);
 
     delete img;
-
-    for (int i = 0; i < size; i++) {
-        delete pixels[i];
-    }
-    delete pixels;
 }
 
 void Image::Sharpen(int n) {

@@ -30,6 +30,8 @@ Rotate:
 	./Assignment1 -input sample_images/Jellyfish.jpg -sampling 0 -rotate 1 -output rotate.png
 	./Assignment1 -input sample_images/Jellyfish.jpg -sampling 2 -rotate 1 -output rotate.png
 Fun:
+	./Assignment1 -input sample_images/millcity.jpg -sampling 0 -fun -output fun.png
+	./Assignment1 -input sample_images/millcity.jpg -sampling 1 -fun -output fun.png
 	./Assignment1 -input sample_images/millcity.jpg -sampling 2 -fun -output fun.png
 Nonphotorealism:
 	./Assignment1 -input sample_images/tree_dark.jpg -nonPhotorealistic -output out.png
