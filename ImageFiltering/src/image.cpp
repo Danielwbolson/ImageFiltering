@@ -8,7 +8,7 @@
  * Image
  **/
 Image::Image (int width_, int height_){
-
+	
     assert(width_ > 0);
     assert(height_ > 0);
 
@@ -276,11 +276,6 @@ static int Bayer4[4][4] =
     { 0,  8,  2, 10}
 };
 
-
-void Image::OrderedDither(int nbits)
-{
-    /* WORK HERE */
-}
 
 /* Error-diffusion parameters */
 const double

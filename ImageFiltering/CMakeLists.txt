@@ -1,4 +1,4 @@
-project(hw1)
+project(ImageFiltering)
 cmake_minimum_required(VERSION 3.10)
 
 file(GLOB SRC
